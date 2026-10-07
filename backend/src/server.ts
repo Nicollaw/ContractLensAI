@@ -1,12 +1,11 @@
 import express from 'express';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
 
-app.get('/health', (req, res) => {
-    res.json({status: 'ok'});
-});
+app.use(express.json());
+
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta http://localhost:${PORT}`)
-})
+});
