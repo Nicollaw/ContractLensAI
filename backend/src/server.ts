@@ -1,5 +1,5 @@
 import express from 'express';
-import contratosRouter from './routes/contratos.routes';
+import contratosRouter from './routes/contratos.routes.js';
 
 const app = express();
 const PORT = process.env.PORT;
