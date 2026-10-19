@@ -27,8 +27,14 @@ contratosRouter.get('/', (req: Request, res: Response) => {
 contratosRouter.get('/:id', (req: Request<{id: string}>, res: Response) => {
     const { id } = req.params
      if (!validate(id)) {
-         return res.status(400).json({ erro: 'id invalido' })
-     } return res.status(200).json({id})
+         return res.status(400).json({ erro: 'deve ser um UUID válido' })
+     }   return res.status(200).json({id});
 })
 
+contratosRouter.delete('/:id', (req: Request<{id: string}>, res: Response) => {
+    const { id } = req.params
+     if (!validate(id)) {
+         return res.status(400).json({ erro: 'deve ser um UUID válido' });
+     }   return res.status(204).send();
+})
 export default contratosRouter;
