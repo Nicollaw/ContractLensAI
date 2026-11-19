@@ -3,10 +3,11 @@ import type { Request, Response } from 'express';
 import type { CreateContratoInput } from '../types/contrato.js';
 import { validate } from 'uuid';
 import {prisma} from '../lib/prisma.js'
+import { upload } from '../lib/upload.js';
 
 const contratosRouter = Router();
 
-contratosRouter.post('/', async (req: Request <{},{}, CreateContratoInput>, res: Response) => {
+contratosRouter.post('/', upload.single(''), async (req: Request <{},{}, CreateContratoInput>, res: Response) => {
     const {fileName, type, filePath} = req.body ?? {};
     if (!fileName) {
      return res.status(400).json({ erro: "Ops, você esqueceu de selecionar o arquivo!!" });

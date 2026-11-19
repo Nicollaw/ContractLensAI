@@ -9,10 +9,9 @@ if (!connectionString) {
   throw new Error("DATABASE_URL não foi definida")
 }
 
-const prisma = new PrismaClient({
+export const prisma = new PrismaClient({
   adapter: new PrismaPg({
     connectionString
   })
 })
 
-export { prisma }
